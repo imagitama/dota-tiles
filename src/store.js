@@ -5,7 +5,7 @@ import createHistory from 'history/createBrowserHistory'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import rootReducer from './ducks'
-import { middleware as analyticsMiddleware } from './analytics'
+import analyticsMiddleware from './analytics'
 
 const persistConfig = {
   key: 'root',

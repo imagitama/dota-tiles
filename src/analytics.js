@@ -1,24 +1,15 @@
-import GoogleTagManager from '@redux-beacon/google-tag-manager'
-import { createMetaReducer, createMiddleware } from 'redux-beacon'
+import { MOVE_TILE } from './ducks/tiles/actions'
 
-const options = {
-  dataLayerName: 'my-data-layer'
-}
+const allowedActions = [MOVE_TILE]
 
-const performNavigationEvent = (action, prevState, nextState) => {
-  return {
-    event: 'navigate',
-    pageUrl: action.payload.pageUrl
+const analyticsMiddleware = store => next => action => {
+  if (window.gtag && allowedActions.includes(action.type)) {
+    window.gtag('event', 'action', {
+      event_category: action.type,
+      event_label: JSON.stringify(action.payload)
+    })
   }
+  return next(action)
 }
 
-const eventsMap = {
-  PERFORM_NAVIGATION: performNavigationEvent
-}
-
-const gtm = GoogleTagManager(options)
-
-const middleware = createMiddleware(eventsMap, gtm)
-const metaReducer = createMetaReducer(eventsMap, gtm)
-
-export { middleware, metaReducer }
+export default analyticsMiddleware
