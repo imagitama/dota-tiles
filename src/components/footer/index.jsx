@@ -19,7 +19,7 @@ const PageFooter = () => (
   <FooterStyled>
     <FooterItemStyled>Copyright 2019</FooterItemStyled>
     <FooterItemStyled>
-      <a href="#">Visit my GitHub.</a>
+      <a href="https://github.com/imagitama/dota-tiles">Visit my GitHub.</a>
     </FooterItemStyled>
     <FooterItemStyled>
       <button onClick={() => localStorage.clear()}>Reset</button>
