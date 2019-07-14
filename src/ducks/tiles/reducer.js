@@ -45,9 +45,12 @@ const createTilesByCategory = (category, categoryIdx) => {
 }
 
 const createTiles = () =>
-  Object.keys(heroCategories).reduce((tiles, categoryName, idx) => {
-    return tiles.concat(createTilesByCategory(categoryName, idx))
-  }, [])
+  [heroCategories.str, heroCategories.agi, heroCategories.int].reduce(
+    (tiles, categoryName, idx) => {
+      return tiles.concat(createTilesByCategory(categoryName, idx))
+    },
+    []
+  )
 
 const initialState = {
   tiles: createTiles(),
