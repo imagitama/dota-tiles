@@ -7,10 +7,11 @@ import {
   dragTile as dragTileAction,
   moveTile as moveTileAction
 } from '../../ducks/tiles/actions'
+import { TILE_WIDTH, TILE_HEIGHT } from '../../constants'
 
 const TileStyled = styled.div`
-  width: 84px;
-  height: 48px;
+  width: ${TILE_WIDTH}px;
+  height: ${TILE_HEIGHT}px;
   position: absolute;
   top: 0;
   left: 0;
